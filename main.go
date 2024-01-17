@@ -1,9 +1,24 @@
 package main
 
-import "github.com/steniocg/gopportunities/router"
+import (
+	"github.com/steniocg/gopportunities/config"
+	"github.com/steniocg/gopportunities/router"
+)
+
+var (
+	logger config.Logger
+)
 
 func main() {
-	//Inicialize Router
+	logger = *config.GetLogger("main")
+	//Initialize Config
+	err := config.Init()
+	if err != nil {
+		logger.Errorf("config initialization error: %v", err)
+		return
+	}
+
+	//Initialize Router
 	router.Initialize()
 
 }
