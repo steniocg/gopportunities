@@ -10,7 +10,7 @@ var (
 )
 
 func main() {
-	logger = config.GetLoggoer("main")
+	logger = config.GetLogger("main")
 	// Initialize Configs
 	err := config.Init()
 	if err != nil {

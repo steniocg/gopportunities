@@ -13,7 +13,7 @@ func Init() error {
 	return nil
 }
 
-func GetLoggoer(p string) *Logger {
+func GetLogger(p string) *Logger {
 	//Initialize Logger
 	logger = NewLogger(p)
 	return logger
