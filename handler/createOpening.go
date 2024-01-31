@@ -18,14 +18,14 @@ func CreateOpeningHandler(ctx *gin.Context) {
 		sendError(ctx, http.StatusBadRequest, err.Error())
 	}
 
-	opening schemas.Opening := schemas.Opening {
-		Role: request.Role,
-		Company: request.Company,
-		Lcation: request.Location,
-		Remote: *request.Remote,
-		Link: request.Link,
-		Salary: request.Salary,
-	} 
+	opening := schemas.Opening{
+		Role:     request.Role,
+		Company:  request.Company,
+		Location: request.Location,
+		Remote:   *request.Remote,
+		Link:     request.Link,
+		Salary:   request.Salary,
+	}
 
 	if err := db.Create(&opening).Error; err != nil {
 		logger.Errorf("erro creating opening: %v", err.Error())
@@ -33,5 +33,5 @@ func CreateOpeningHandler(ctx *gin.Context) {
 		return
 	}
 
-	sandSuccess(ctx, "create-opening", opening)
+	sendSuccess(ctx, "create-opening", opening)
 }
